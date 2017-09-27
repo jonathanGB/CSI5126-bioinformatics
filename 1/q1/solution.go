@@ -21,6 +21,6 @@ func main() {
 	// get a FASTA struct representing the input file, then transcript it
 	input := utils.ReadFASTAFile(file)
 	input.Transcript()
-	
+
 	fmt.Println(input.Body)
 }
