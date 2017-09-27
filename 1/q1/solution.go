@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -17,15 +16,14 @@ func main() {
 
 	input := utils.ReadFASTAFile(file)
 
-	var transcripted []string
-	for _, rune := range input.Body {
-		char := string(rune)
-		if char == "T" {
-			char = "U"
+	var transcripted []rune
+	for _, char := range input.Body {
+		if char == 'T' {
+			char = 'U'
 		}
 
 		transcripted = append(transcripted, char)
 	}
 
-	fmt.Println(strings.Join(transcripted, ""))
+	fmt.Println(string(transcripted))
 }
