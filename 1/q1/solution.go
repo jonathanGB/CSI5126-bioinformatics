@@ -1,3 +1,4 @@
+// Jonathan Guillotte-Blouin - 7900293
 package main
 
 import (
@@ -7,6 +8,9 @@ import (
 	"os"
 )
 
+/*
+	Transcription
+*/
 func main() {
 	file, err := os.Open("input.txt")
 	if err != nil {
@@ -14,15 +18,17 @@ func main() {
 	}
 	defer file.Close()
 
+	// get a FASTA struct representing the input file
 	input := utils.ReadFASTAFile(file)
 
-	var transcripted []rune
-	for _, char := range input.Body {
+	transcripted := make([]rune, len(input.Body))
+	for i, char := range input.Body {
+		// for every 'T', change it to a 'U'
 		if char == 'T' {
 			char = 'U'
 		}
 
-		transcripted = append(transcripted, char)
+		transcripted[i] = char
 	}
 
 	fmt.Println(string(transcripted))
