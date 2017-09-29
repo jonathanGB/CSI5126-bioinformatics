@@ -1,0 +1,13 @@
+I ran the "reading frames" algorithm of q3 with the current input (input.txt), and stored the output in output.txt
+
+These are the likely proteins I got for each frame on UniProt BLAST:
+
+5'3' Frame 1: Cytochrome c oxidase subunit I (Lepidochelys olivacea) ... Identity: 20% ... Score: 92
+5'3' Frame 2: Cytochrome c oxidase subunit 1 (Diplonema sp. ATCC 50224) ... Identity: 98% ... Score: 1039
+5'3' Frame 3: NO RESULTS
+3'5' Frame 1: Cytochrome c oxidase subunit I (Nephotettix virescens) ... Identity: 39.9% ... Score: 247
+3'5' Frame 2: NO RESULTS
+3'5' Frame 3: Uncharacterized protein (mine drainage metagenome) ... Identity: 38.5% ... Score: 117
+
+5'3' Frame 2 seems to correspond to a protein sequence. The protein is called "Cytochrome c oxidase subunit 1 (Diplonema sp. ATCC 50224)"
+and is found in the organism "Diplonema sp. ATCC 50224", which is an Eukaryot. As mentionned, its identity is 98%.
