@@ -95,7 +95,7 @@ func (brand *FASTA) ReadFrame(direction string, start int) *FASTA {
 		codon = append(codon, char)
 
 		if len(codon) == 3 {
-			aminoAcid := nucleotidesToAminoAcid[string(codon)]
+			aminoAcid := NucleotidesToAminoAcid[string(codon)]
 			frame = append(frame, aminoAcid)
 			codon = []rune{}
 		}
@@ -121,7 +121,7 @@ var complements = map[rune]rune{
 }
 
 // map of nucleotides triplets to amino acid
-var nucleotidesToAminoAcid = map[string]rune{
+var NucleotidesToAminoAcid = map[string]rune{
 	"ATT": 'I',
 	"ATC": 'I',
 	"ATA": 'I',
