@@ -83,7 +83,7 @@ func ReadFASTAFile(file io.Reader) *FASTA {
 }
 
 func (brand *FASTA) ReadFrame(direction string, start int) *FASTA {
-	header := fmt.Sprintf("%s Frame %d", direction, start + 1)
+	header := fmt.Sprintf("> %s Frame %d", direction, start + 1)
 	codon := []rune{}
 	frame := []rune{}
 
@@ -96,7 +96,7 @@ func (brand *FASTA) ReadFrame(direction string, start int) *FASTA {
 
 		if len(codon) == 3 {
 			aminoAcid := nucleotidesToAminoAcid[string(codon)]
-			frame = append(frame, aminoAcid, ' ')
+			frame = append(frame, aminoAcid)
 			codon = []rune{}
 		}
 		i++
