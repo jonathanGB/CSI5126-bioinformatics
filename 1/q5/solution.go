@@ -13,7 +13,7 @@ func main() {
 
 	// make a map of aminoAcids to all the codons which generate it
 	aminoAcidsToCodons := map[rune][]string{}
-	for codon, aminoAcid := range utils.NucleotidesToAminoAcid {
+	for codon, aminoAcid := range utils.CodonToAminoAcid {
 		aminoAcidsToCodons[aminoAcid] = append(aminoAcidsToCodons[aminoAcid], codon)
 	}
 
@@ -41,6 +41,7 @@ func main() {
 			// compare every pair of amino acids of both amino acids
 			for _, codonA := range codonsA {
 				for _, codonB := range codonsB {
+					// if this pair of amino acids has the smallest hamming distance, remember it
 					if dist := hammingDistance(codonA, codonB); dist < minDistance {
 						minDistance = dist
 						minCodonA, minCodonB = codonA, codonB
@@ -50,6 +51,39 @@ func main() {
 
 			fmt.Printf("Pair %c-%c: Min distance: %d (%s-%s)\n", aminoAcidA, aminoAcidB, minDistance, minCodonA, minCodonB)
 		}
+	}
+
+	fmt.Println("\n\nPart 3: Print all silent mutations:\n")
+
+	nucleotides := []byte{'A', 'C', 'T', 'G'}
+	for i := 0; i < 3; i++ {
+		silentMutationsCtr := 0
+
+		for codon, aminoAcid := range utils.CodonToAminoAcid {
+			mutatedNucleotide := codon[i]
+
+			for _, newNucleotide := range nucleotides {
+				if newNucleotide == mutatedNucleotide {
+					continue
+				}
+
+				mutatedCodonSlice := make([]byte, 3)
+				for j := 0; j < 3; j++ {
+					if i == j {
+						mutatedCodonSlice[j] = newNucleotide
+					} else {
+						mutatedCodonSlice[j] = codon[j]
+					}
+				}
+
+				mutatedCodon := string(mutatedCodonSlice)
+				if aminoAcidMatched := utils.CodonToAminoAcid[mutatedCodon]; aminoAcidMatched == aminoAcid {
+					silentMutationsCtr++
+				}
+			}
+		}
+
+		fmt.Printf("Number of silent mutations at index %d: %d (out of 192 possibilities)\n", i, silentMutationsCtr)
 	}
 }
 

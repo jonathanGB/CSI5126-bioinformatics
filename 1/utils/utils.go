@@ -2,8 +2,8 @@
 package utils
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"io"
 	"strings"
 )
@@ -83,7 +83,7 @@ func ReadFASTAFile(file io.Reader) *FASTA {
 }
 
 func (brand *FASTA) ReadFrame(direction string, start int) *FASTA {
-	header := fmt.Sprintf("> %s Frame %d", direction, start + 1)
+	header := fmt.Sprintf("> %s Frame %d", direction, start+1)
 	codon := []rune{}
 	frame := []rune{}
 
@@ -95,7 +95,7 @@ func (brand *FASTA) ReadFrame(direction string, start int) *FASTA {
 		codon = append(codon, char)
 
 		if len(codon) == 3 {
-			aminoAcid := NucleotidesToAminoAcid[string(codon)]
+			aminoAcid := CodonToAminoAcid[string(codon)]
 			frame = append(frame, aminoAcid)
 			codon = []rune{}
 		}
@@ -121,7 +121,7 @@ var complements = map[rune]rune{
 }
 
 // map of nucleotides triplets to amino acid
-var NucleotidesToAminoAcid = map[string]rune{
+var CodonToAminoAcid = map[string]rune{
 	"ATT": 'I',
 	"ATC": 'I',
 	"ATA": 'I',
