@@ -2,10 +2,11 @@
 package main
 
 import (
-	"../utils"
 	"fmt"
 	"log"
 	"os"
+
+	"../utils"
 )
 
 /*

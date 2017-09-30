@@ -2,10 +2,11 @@
 package main
 
 import (
-	"../utils"
 	"fmt"
 	"log"
 	"os"
+
+	"../utils"
 )
 
 /*
@@ -18,7 +19,7 @@ func main() {
 	}
 	defer file.Close()
 
-	// get a FASTA struct representing the input file
+	// get a FASTA struct representing the input file, then reverse-complement it
 	input := utils.ReadFASTAFile(file)
 	input.ReverseComplement()
 

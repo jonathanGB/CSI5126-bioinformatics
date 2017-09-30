@@ -14,6 +14,7 @@ type FASTA struct {
 	Body   string
 }
 
+// method to transcript a FASTA structure
 func (brand *FASTA) Transcript() *FASTA {
 	transcripted := make([]rune, len(brand.Body))
 	for i, char := range brand.Body {
@@ -29,6 +30,7 @@ func (brand *FASTA) Transcript() *FASTA {
 	return brand
 }
 
+// method to complement a sequence
 func (brand *FASTA) Complement() *FASTA {
 	complemented := make([]rune, len(brand.Body))
 
@@ -44,6 +46,7 @@ func (brand *FASTA) Complement() *FASTA {
 	return brand
 }
 
+// method to reverse a sequence
 func (brand *FASTA) Reverse() *FASTA {
 	brandLen := len(brand.Body)
 	reversed := make([]rune, brandLen)
@@ -57,6 +60,7 @@ func (brand *FASTA) Reverse() *FASTA {
 	return brand
 }
 
+// method to reverse and complement a sequence
 func (brand *FASTA) ReverseComplement() {
 	brand.Reverse().Complement()
 }
@@ -82,32 +86,35 @@ func ReadFASTAFile(file io.Reader) *FASTA {
 	}
 }
 
+// method to get a reading frame starting at position "start"
 func (brand *FASTA) ReadFrame(direction string, start int) *FASTA {
 	header := fmt.Sprintf("> %s Frame %d", direction, start+1)
-	codon := []rune{}
-	frame := []rune{}
+	var codon, frame []rune
 
+	// iterate the whole body (sequence)
 	for i, char := range brand.Body {
+		// skip till position "start"
 		if i < start {
 			continue
 		}
 
+		// if len == 3, we got a triplet; find the associated amino acid and store it
 		codon = append(codon, char)
-
 		if len(codon) == 3 {
 			aminoAcid := CodonToAminoAcid[string(codon)]
 			frame = append(frame, aminoAcid)
-			codon = []rune{}
+			codon = nil // make sure to start the codon temporary storage back to 0
 		}
-		i++
 	}
 
+	// return the pointer to the struct (which is the reading frame)
 	return &FASTA{
 		header,
 		string(frame),
 	}
 }
 
+// defines how to print a FASTA struct
 func (brand *FASTA) String() string {
 	return fmt.Sprintf("%s\n%s\n", brand.Header, brand.Body)
 }
@@ -120,7 +127,7 @@ var complements = map[rune]rune{
 	'G': 'C',
 }
 
-// map of nucleotides triplets to amino acid
+// map of codons to amino acid
 var CodonToAminoAcid = map[string]rune{
 	"ATT": 'I',
 	"ATC": 'I',

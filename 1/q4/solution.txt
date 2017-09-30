@@ -1,3 +1,5 @@
+// Jonathan Guillotte-Blouin - 7900293
+
 I ran the "reading frames" algorithm of q3 with the current input (input.txt), and stored the output in output.txt
 
 These are the likely proteins I got for each frame on UniProt BLAST:
