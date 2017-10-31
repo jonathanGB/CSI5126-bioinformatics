@@ -1,0 +1,12 @@
+a) 
+Case 1: First of all, if length of `a` is not equal to the length of `b`, `a` is not a rotation of `b`. 
+Case 2: Otherwise, we want to store the concatenation of `a` and `a`, called `c` (if `a` is "abc", `c` will be "abcabc").
+Using the provided algorithm `match(string, text)`, call `match(b, c)`: if there's a match, `a` is a rotation of `b`; otherwise, it is not.
+
+
+b)
+Case 1: O(1) in terms of space and time (I assume that getting the length of a string takes constant time).
+Case 2: Assume length of the strings is `n`. The computation evolves around `c`, which is of length `n+n = 2n`.
+The linear `match` function will take O(2n) = O(n) in terms of time, and we require to store `c`, which is O(2n) = O(n) in terms of space.
+
+Therefore, the best case requires O(1) of space and time; the worst case requires O(n) of space and time.
