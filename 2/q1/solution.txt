@@ -1,3 +1,5 @@
+Jonathan Guillotte-Blouin — 7900293
+
 a) 
 Case 1: First of all, if length of `a` is not equal to the length of `b`, `a` is not a rotation of `b`. 
 Case 2: Otherwise, we want to store the concatenation of `a` and `a`, called `c` (if `a` is "abc", `c` will be "abcabc").

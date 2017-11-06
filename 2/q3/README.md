@@ -1,3 +1,5 @@
+Jonathan Guillotte-Blouin — 7900293
+
 To run this program, you need to install external dependencies (as plotting is not part of the core language).
 This can be done like this:
 ```

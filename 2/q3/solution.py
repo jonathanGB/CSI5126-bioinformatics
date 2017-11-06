@@ -1,3 +1,5 @@
+# Jonathan Guillotte-Blouin — 7900293
+
 import random
 import sys
 

@@ -1,3 +1,5 @@
+Jonathan Guillotte-Blouin — 7900293
+
 We have a string I of length m and a string J of length n.
 
 If I or J is empty, the number of alignments is 1.
