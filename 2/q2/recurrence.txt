@@ -1,0 +1,11 @@
+We have a string I of length m and a string J of length n.
+
+If I or J is empty, the number of alignments is 1.
+Otherwise, the number of alignments, we'll call A(i, j) where i is the length of the prefix of I and j is the length of the prefix of J, is:
+  A(i, j) = A(i-1, j) + A(i, j-1) + A(i-1, j-1)
+
+We start with the improper prefix for I and J, e.g. A(m, n).
+
+The recurrence equation is therefore:
+  - A(0, j) = A(i, 0) = 1
+  - A(i, j) = A(i-1, j) + A(i, j-1) + A(i-1, j-1)
