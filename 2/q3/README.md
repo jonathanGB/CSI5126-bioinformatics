@@ -13,4 +13,4 @@ I've provided in this current folder 4 images of successive runs of the algorith
 To answer question 3, which asked:
 > Does it look like any distribution that you know of?
 
-I would say that it looks like a Extreme Value Distribution (EVD), more precisely a Gumbel (or type I) distribution.
+I would say that it looks like a Extreme Value Distribution (EVD), more precisely a Gumbel (or type I) distribution. Otherwise, it may be a slightly asymetric normal distribution.
