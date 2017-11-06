@@ -1,4 +1,8 @@
 To run this program, you need to install external dependencies (as plotting is not part of the core language).
+This can be done like this:
+```
+pip3 install numpy && pip3 install matplotlib
+```
 
 If that's the case, simply run `python3 solution.py --plot` — the program runs in around ~1min.
 
